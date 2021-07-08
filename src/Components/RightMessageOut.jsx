@@ -9,19 +9,21 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 10vh;
-    background: #636363;
 `
-const Title = styled.p`
+const Message = styled.p`
     color: #FFFFFF;
-    margin-left: .5em;
+    background: blue;
+    padding: 0.5em;
+    margin-right: 1em;
     font-size: 2em;
     font-weight: 500;
+    border-radius: 1em;
 `
 
-const RightMessageOut = () => {
+const RightMessageOut = ({ message }) => {
     return (
         <Container>
-            <Title>Message Out</Title>
+            <Message>{ message }</Message>
         </Container>
     )
 }

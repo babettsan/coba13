@@ -50,14 +50,18 @@ const Ship = () => {
             <RightSide>
                 <RightHeader/>
                 <RightSideContent>
-                    <RightMessageIn/>
-                    <RightMessageOut/>
-                    <RightMessageIn/>
-                    <RightMessageOut/>
-                    <RightMessageIn/>
-                    <RightMessageOut/>
-                    <RightMessageIn/>
-                    <RightMessageOut/>
+                    <RightMessageIn message='Mensaje de entrada'/>
+                    <RightMessageOut message='Mensaje de salida'/>
+                    <RightMessageIn message='Mensaje de entrada'/>
+                    <RightMessageOut message='Mensaje de salida'/>
+                    <RightMessageIn message='Mensaje de entrada'/>
+                    <RightMessageOut message='Mensaje de salida'/>
+                    <RightMessageIn message='Mensaje de entrada'/>
+                    <RightMessageOut message='Mensaje de salida'/>
+                    <RightMessageIn message='Mensaje de entrada'/>
+                    <RightMessageOut message='Mensaje de salida'/>
+                    <RightMessageIn message='Mensaje de entrada'/>
+                    <RightMessageOut message='Mensaje de salida'/>
                 </RightSideContent>
                 <RightSideFooter/>
             </RightSide>

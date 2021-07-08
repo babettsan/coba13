@@ -6,21 +6,24 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    align-items: center;
     width: 100%;
     height: 10vh;
-    background: #868686;
 `
-const Title = styled.p`
+const Message = styled.p`
     color: #FFFFFF;
-    margin-left: .5em;
+    background: red;
+    padding: .5em;
+    margin-left: 1em;
     font-size: 2em;
     font-weight: 500;
+    border-radius: 1em;
 `
 
-const RightMessageIn = () => {
+const RightMessageIn = ({ message }) => {
     return (
         <Container>
-            <Title>Message In</Title>
+            <Message>{message}</Message>
         </Container>
     )
 }
