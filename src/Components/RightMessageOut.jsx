@@ -11,13 +11,14 @@ const Container = styled.div`
     height: 10vh;
 `
 const Message = styled.p`
-    color: #FFFFFF;
-    background: blue;
-    padding: 0.5em;
+    color: var(--message-font);
+    background: var(--answer);
+    padding: .5em 1em .5em 1em;
     margin-right: 1em;
     font-size: 2em;
     font-weight: 500;
     border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 `
 
 const RightMessageOut = ({ message }) => {

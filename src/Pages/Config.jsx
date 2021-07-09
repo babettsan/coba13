@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 import LeftHeader from '../Components/LeftHeader'
 import LeftContact from '../Components/LeftContact'
 import RightHeader from '../Components/RightHeader'
@@ -45,35 +45,7 @@ const RightSideFooter = styled.div`
     bottom: 0%;
 `
 
-const Ship = () => {
-
-    const [messages, setMessages] = useState([])
-    
-    const messagesEndRef = useRef(null)
-
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    }
-
-    useEffect(() => {
-        scrollToBottom()
-    }, [messages])
-
-    const handleIn = () => {
-        setMessages([...messages, {
-            message: 'Mensaje de entrada'
-        }])
-    }
-    const handleOut = () => {
-        setMessages([...messages, {
-            answer: 'Mensaje de salida'
-        }])
-    }
-
-    const handleClear = () => {
-        setMessages([])
-    }
-
+const Config = () => {
     return (
         <Container>
             <LeftSide>
@@ -90,22 +62,14 @@ const Ship = () => {
             <RightSide>
                 <RightHeader/>
                 <RightSideContent>
-                    {messages.map((m) => (
-                        <>
-                        {(m.message) ? <RightMessageIn message={m.message}/> : null}
-                        {(m.answer) ? <RightMessageOut message={m.answer}/> : null}
-                        </>
-                    ))}
-                    <div ref={messagesEndRef}></div>
+
                 </RightSideContent>
                 <RightSideFooter>
-                    <button onClick={handleIn}>Receive Message</button>
-                    <button onClick={handleOut}>Send Message</button>
-                    <button onClick={handleClear}>Clear</button>
+
                 </RightSideFooter>
             </RightSide>
         </Container>
     )
 }
 
-export default Ship
+export default Config

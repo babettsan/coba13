@@ -1,6 +1,7 @@
 import React from 'react'
-import Ship from './Pages/Ship.jsx'
 import LandingPage from './Pages/LandingPage.jsx'
+import Ship from './Pages/Ship.jsx'
+import Config from './Pages/Config.jsx'
 
 import { Switch, Route } from 'react-router-dom'
 import { GlobalStyle } from './Styles/GlobalStyles.js'
@@ -11,6 +12,7 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={LandingPage}/>
         <Route exact path='/ship' component={Ship}/>
+        <Route exact path='/config' component={Config}/>
       </Switch>
       <GlobalStyle/>
     </>

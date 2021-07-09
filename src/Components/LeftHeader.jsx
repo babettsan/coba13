@@ -8,7 +8,7 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 10vh;
-    background: #484848
+    background: var(--main-color);
 ;
 `
 const Image = styled.img`
@@ -19,7 +19,7 @@ const Image = styled.img`
     object-fit: cover;
 `
 const Title = styled.p`
-    color: #FFFFFF;
+    color: var(--font-color);
     margin-left: .5em;
     font-size: 2em;
     font-weight: 500;
@@ -28,7 +28,7 @@ const Title = styled.p`
 const LeftHeader = () => {
     return (
         <Container>
-            <Image src='https://i.imgur.com/VVPp9fx.jpg' alt='space-station'/>
+            <Image src='https://i.imgur.com/0c2i4qp.jpg' alt='space-station'/>
             <Title>Estación Espacial</Title>
         </Container>
     )

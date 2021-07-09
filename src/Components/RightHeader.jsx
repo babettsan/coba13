@@ -8,7 +8,7 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 10vh;
-    background: #484848;
+    background: var(--main-color);
     position: fixed;
 `
 const Image = styled.img`
@@ -18,18 +18,33 @@ const Image = styled.img`
     border-radius: 50%;
     object-fit: cover;
 `
+const TextContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+`
 const Title = styled.p`
-    color: #FFFFFF;
-    margin-left: .5em;
+    color: var(--font-color);
+    margin: 0 0 0 .5em;
     font-size: 2em;
     font-weight: 500;
+`
+const SubTitle = styled.p`
+    color: var(--font-color);
+    margin: 0 0 0 .5em;
+    margin-left: .5em;
+    font-size: 2em;
 `
 
 const RightHeader = () => {
     return (
         <Container>
             <Image src='https://i.imgur.com/NlY3dqi.gif' alt='space-station'/>
-            <Title>Astronauta Perdido</Title>
+            <TextContainer>
+                <Title>CoBa 13</Title>
+                <SubTitle>Última conexión: Reciente.</SubTitle>
+            </TextContainer>
         </Container>
     )
 }
