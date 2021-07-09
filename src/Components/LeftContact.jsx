@@ -8,10 +8,14 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 10vh;
-    background: #292929;
+    background: var(--main-dark);
     transition: .25s;
     &:hover {
-        background: gray;
+        cursor: pointer;
+        background: var(--main-color-light);
+        p {
+            color: var(--font-color-hover);
+        }
     }
 `
 const Image = styled.img`
@@ -26,6 +30,7 @@ const Title = styled.p`
     margin-left: .5em;
     font-size: 2em;
     font-weight: 500;
+    transition: .5s;
 `
 
 const LeftContact = ({ src, title }) => {

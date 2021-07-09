@@ -2,8 +2,20 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        --main-color: #CE1131;
-        --secondary-color: #BD0F34;
+        /* User Interface */
+        --font-color: #000000;
+        --font-color-hover: #000000;
+        --main-color: #ff6f00;
+        --main-color-light: #ffa040;
+        --main-dark: #212121;
+        --main-dark-light: #484848;
+        /* Messages */
+        --answer-font: #000000;
+        --answer: #c43e00;
+        --message-font: #000000;
+        --message: #ffa040;
+        /* Backgrounds */
+        --background-image: 'https://i.imgur.com/ezkBk2V.jpg'
     }
     html {
         font-size: 10px !important;
