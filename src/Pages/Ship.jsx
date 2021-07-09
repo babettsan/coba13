@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LeftHeader from '../Components/LeftHeader'
 import LeftContact from '../Components/LeftContact'
 import RightHeader from '../Components/RightHeader'
@@ -39,6 +39,26 @@ const RightSideFooter = styled.div`
 `
 
 const Ship = () => {
+
+    const [messages, setMessages] = useState([])
+
+    const handleIn = () => {
+        setMessages([...messages, {
+            message: 'Mensaje de entrada'
+        }])
+    }
+    const handleOut = () => {
+        setMessages([...messages, {
+            answer: 'Mensaje de salida'
+        }])
+    }
+
+    const handleClear = () => {
+        setMessages([])
+    }
+
+    console.log(messages)
+
     return (
         <Container>
             <LeftSide>
@@ -50,20 +70,18 @@ const Ship = () => {
             <RightSide>
                 <RightHeader/>
                 <RightSideContent>
-                    <RightMessageIn message='Mensaje de entrada'/>
-                    <RightMessageOut message='Mensaje de salida'/>
-                    <RightMessageIn message='Mensaje de entrada'/>
-                    <RightMessageOut message='Mensaje de salida'/>
-                    <RightMessageIn message='Mensaje de entrada'/>
-                    <RightMessageOut message='Mensaje de salida'/>
-                    <RightMessageIn message='Mensaje de entrada'/>
-                    <RightMessageOut message='Mensaje de salida'/>
-                    <RightMessageIn message='Mensaje de entrada'/>
-                    <RightMessageOut message='Mensaje de salida'/>
-                    <RightMessageIn message='Mensaje de entrada'/>
-                    <RightMessageOut message='Mensaje de salida'/>
+                    {messages.map((m) => (
+                        <>
+                        {(m.message) ? <RightMessageIn message={m.message}/> : null}
+                        {(m.answer) ? <RightMessageOut message={m.answer}/> : null}
+                        </>
+                    ))}
                 </RightSideContent>
-                <RightSideFooter/>
+                <RightSideFooter>
+                    <button onClick={handleIn}>Receive Message</button>
+                    <button onClick={handleOut}>Send Message</button>
+                    <button onClick={handleClear}>Clear</button>
+                </RightSideFooter>
             </RightSide>
         </Container>
     )
