@@ -5,6 +5,9 @@ import RightHeader from '../Components/RightHeader'
 import RightMessageIn from '../Components/RightMessageIn'
 import RightMessageOut from '../Components/RightMessageOut'
 
+import { defaultTheme, goodTheme, openTheme, badTheme, alienTheme } from '../Redux/Actions/GlobalStyles/GlobalStylesActions'
+import { useDispatch } from 'react-redux'
+
 import { Link } from 'react-router-dom'
 
 import styled from 'styled-components'
@@ -27,7 +30,7 @@ const RightSide = styled.div`
     background: var(--main-color-light);
     overflow-y: scroll;
     
-    background-image: url('https://i.imgur.com/ezkBk2V.jpg');
+    background-image: var(--background-image);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -46,6 +49,8 @@ const RightSideFooter = styled.div`
 `
 
 const Ship = () => {
+
+    const dispatch = useDispatch()
 
     const [messages, setMessages] = useState([])
     
@@ -102,6 +107,12 @@ const Ship = () => {
                     <button onClick={handleIn}>Receive Message</button>
                     <button onClick={handleOut}>Send Message</button>
                     <button onClick={handleClear}>Clear</button>
+                    <br/>
+                    <button onClick={() => dispatch(defaultTheme())}>DEFAULT</button>
+                    <button onClick={() => dispatch(goodTheme())}>GOOD</button>
+                    <button onClick={() => dispatch(openTheme())}>OPEN</button>
+                    <button onClick={() => dispatch(badTheme())}>BAD</button>
+                    {/* <button onClick={() => dispatch(alienTheme())}>ALIEN</button> */}
                 </RightSideFooter>
             </RightSide>
         </Container>
