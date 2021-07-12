@@ -9,7 +9,7 @@ const Container = styled.div`
     width: 100%;
     height: 10vh;
     background: var(--main-color);
-;
+    transition: 2s;
 `
 const Image = styled.img`
     margin-left: .5em;

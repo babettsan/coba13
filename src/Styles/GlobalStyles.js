@@ -107,16 +107,16 @@ export const badTheme = {
 export const alienTheme = {
     /* User Interface */
     mainColor: '#76ff03',
-    mainColorLight: '#ff3d00',
+    mainColorLight: '#b0ff57',
     mainDark: '#212121',
     mainDarkLight: '#484848',
     fontColor: '#000000',
     fontColorHover: '#000000',
     /* Messages */
     answerFont: '#000000',
-    answer: '#c30000',
+    answer: '#32cb00',
     messageFont: '#000000',
-    message: '#ff3d00',
+    message: '#b0ff57',
     /* Backgrounds */
     backgroundImage: `url('https://cdna.artstation.com/p/assets/images/images/021/913/098/large/darien-bartholomew-darien-bartholomew-nest-without-marine.jpg?1573425894')`
 }

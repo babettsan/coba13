@@ -9,6 +9,7 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 10vh;
+    transition: 2s;
 `
 const Message = styled.p`
     color: var(--answer-color);
@@ -19,6 +20,7 @@ const Message = styled.p`
     font-weight: 500;
     border-radius: 1em;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    transition: 2s;
 `
 
 const RightMessageIn = ({ message }) => {

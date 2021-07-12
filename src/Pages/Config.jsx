@@ -2,8 +2,8 @@ import React from 'react'
 import LeftHeader from '../Components/LeftHeader'
 import LeftContact from '../Components/LeftContact'
 import RightHeader from '../Components/RightHeader'
-import RightMessageIn from '../Components/RightMessageIn'
-import RightMessageOut from '../Components/RightMessageOut'
+// import RightMessageIn from '../Components/RightMessageIn'
+// import RightMessageOut from '../Components/RightMessageOut'
 
 import { Link } from 'react-router-dom'
 
