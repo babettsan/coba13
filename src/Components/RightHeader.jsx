@@ -10,6 +10,7 @@ const Container = styled.div`
     height: 10vh;
     background: var(--main-color);
     position: fixed;
+    transition: 2s;
 `
 const Image = styled.img`
     margin-left: .5em;
@@ -37,13 +38,18 @@ const SubTitle = styled.p`
     font-size: 2em;
 `
 
-const RightHeader = () => {
+const RightHeader = ({ writing }) => {
     return (
         <Container>
             <Image src='https://i.imgur.com/NlY3dqi.gif' alt='space-station'/>
             <TextContainer>
                 <Title>CoBa 13</Title>
+                {(writing) ? 
+                <SubTitle>Escribiendo...</SubTitle>
+                :
                 <SubTitle>Última conexión: Reciente.</SubTitle>
+                }
+                
             </TextContainer>
         </Container>
     )

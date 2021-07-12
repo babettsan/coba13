@@ -4,9 +4,11 @@ import LeftContact from '../Components/LeftContact'
 import RightHeader from '../Components/RightHeader'
 import RightMessageIn from '../Components/RightMessageIn'
 import RightMessageOut from '../Components/RightMessageOut'
+import RightAnswers from '../Components/RightAnswers'
 
+import { getMessages } from '../Redux/Actions/Messages/MessagesActions'
 import { defaultTheme, goodTheme, openTheme, badTheme, alienTheme } from '../Redux/Actions/GlobalStyles/GlobalStylesActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 
@@ -29,11 +31,11 @@ const RightSide = styled.div`
     height: 90vh;
     background: var(--main-color-light);
     overflow-y: scroll;
-    
     background-image: var(--background-image);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    transition: 2s;
 `
 const RightSideContent = styled.div`
     width: 100%;
@@ -41,25 +43,65 @@ const RightSideContent = styled.div`
     margin-top: 10vh;
 `
 const RightSideFooter = styled.div`
-    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 70vw;
     height: 10vh;
-    background: black;
+    background: var(--main-color);
     position: fixed;
     bottom: 0%;
+    transition: 2s;
 `
 
 const Ship = () => {
 
     const dispatch = useDispatch()
-
-    const [messages, setMessages] = useState([])
-    
+    const messagesDB = useSelector(state => state.messages.messages)
     const messagesEndRef = useRef(null)
 
+    const [messages, setMessages] = useState([])
+
+    const [chapter, setChapter] = useState(1)
+    const [message1, setMessage1] = useState(false)
+    const [message2, setMessage2] = useState(false)
+    const [message3, setMessage3] = useState(false)
+    const [writing, setWriting] = useState(false)
+    
+    const setMessageTime = (message) => {
+        setWriting(true)
+        const time = message.length * 100
+        if (message1 === false) {
+            setTimeout(() => {
+                setMessage1(true)
+                setWriting(false)
+            }, time)
+        }
+        if (message2 === false) {
+            setTimeout(() => {
+                setMessage2(true)
+                setWriting(false)
+            }, time)
+        }
+        if (message3 === false) {
+            setTimeout(() => {
+                setMessage3(true)
+                setWriting(false)
+            }, time)
+        }
+    }
+    
+    useEffect(() => {
+        if (messagesDB.length > 0) return
+        dispatch(getMessages())
+        setMessageTime('asdasdasdasdasdasdasdasd')
+    }, [])
+    
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
     }
-
+    
     useEffect(() => {
         scrollToBottom()
     }, [messages])
@@ -91,28 +133,38 @@ const Ship = () => {
                 <Link to='/config' style={{ textDecoration: 'none'}}>
                     <LeftContact src='https://i.imgur.com/TOznIdC.png' title='Configuración'/>
                 </Link>
+                <button onClick={handleIn}>Receive Message</button>
+                <button onClick={handleOut}>Send Message</button>
+                <button onClick={handleClear}>Clear</button>
+                <br/>
+                <button onClick={() => dispatch(defaultTheme())}>DEFAULT</button>
+                <button onClick={() => dispatch(goodTheme())}>GOOD</button>
+                <button onClick={() => dispatch(openTheme())}>OPEN</button>
+                <button onClick={() => dispatch(badTheme())}>BAD</button>
+                <button onClick={() => dispatch(alienTheme())}>ALIEN</button>
             </LeftSide>
             <RightSide>
-                <RightHeader/>
+                <RightHeader writing={writing}/>
                 <RightSideContent>
+                    
                     {messages.map((m) => (
                         <>
                         {(m.message) ? <RightMessageIn message={m.message}/> : null}
                         {(m.answer) ? <RightMessageOut message={m.answer}/> : null}
                         </>
-                    ))}
+                    ))} 
+                   
+
+                    {(message1) ? <RightMessageIn message={messagesDB[0].message1}/> : null}
+                    {(message2) ? <RightMessageIn message={messagesDB[0].message2}/> : null}
+                    {(message3) ? <RightMessageIn message={messagesDB[0].message3}/> : null}
+
                     <div ref={messagesEndRef}></div>
                 </RightSideContent>
                 <RightSideFooter>
-                    <button onClick={handleIn}>Receive Message</button>
-                    <button onClick={handleOut}>Send Message</button>
-                    <button onClick={handleClear}>Clear</button>
-                    <br/>
-                    <button onClick={() => dispatch(defaultTheme())}>DEFAULT</button>
-                    <button onClick={() => dispatch(goodTheme())}>GOOD</button>
-                    <button onClick={() => dispatch(openTheme())}>OPEN</button>
-                    <button onClick={() => dispatch(badTheme())}>BAD</button>
-                    {/* <button onClick={() => dispatch(alienTheme())}>ALIEN</button> */}
+                        <RightAnswers answer='Respuesta 1'/>
+                        <RightAnswers answer='Respuesta 2'/>
+                        <RightAnswers answer='Respuesta 3'/>
                 </RightSideFooter>
             </RightSide>
         </Container>
