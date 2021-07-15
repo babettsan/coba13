@@ -55,70 +55,82 @@ const RightSideFooter = styled.div`
     transition: 2s;
 `
 
+    // // ********** Testing **********
+    // useEffect(() => {
+    //     scrollToBottom()
+    // }, [messages])
+
+    // const scrollToBottom = () => {
+    //     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    // }
+    // const handleIn = () => {
+    //     setMessages([...messages, {
+    //         message: 'Mensaje de entrada'
+    //     }])
+    // }
+    // const handleOut = () => {
+    //     setMessages([...messages, {
+    //         answer: 'Mensaje de salida'
+    //     }])
+    // }
+    // const handleClear = () => {
+    //     setMessages([])
+    // }
+    // // ********** Testing **********
+
 const Ship = () => {
 
     const dispatch = useDispatch()
     const messagesDB = useSelector(state => state.messages.messages)
     const messagesEndRef = useRef(null)
 
-    const [messages, setMessages] = useState([])
-
-    const [chapter, setChapter] = useState(1)
+    const [index, setIndex] = useState(0)
     const [message1, setMessage1] = useState(false)
     const [message2, setMessage2] = useState(false)
     const [message3, setMessage3] = useState(false)
+    const [messages, setMessages] = useState([])
+
     const [writing, setWriting] = useState(false)
-    
-    const setMessageTime = (message) => {
-        setWriting(true)
-        const time = message.length * 100
-        if (message1 === false) {
-            setTimeout(() => {
-                setMessage1(true)
-                setWriting(false)
-            }, time)
-        }
-        if (message2 === false) {
-            setTimeout(() => {
-                setMessage2(true)
-                setWriting(false)
-            }, time)
-        }
-        if (message3 === false) {
-            setTimeout(() => {
-                setMessage3(true)
-                setWriting(false)
-            }, time)
-        }
-    }
     
     useEffect(() => {
         if (messagesDB.length > 0) return
+        setMessageOneTime('test test test test test test')
         dispatch(getMessages())
-        setMessageTime('asdasdasdasdasdasdasdasd')
     }, [])
-    
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    }
-    
-    useEffect(() => {
-        scrollToBottom()
-    }, [messages])
 
-    const handleIn = () => {
-        setMessages([...messages, {
-            message: 'Mensaje de entrada'
-        }])
-    }
-    const handleOut = () => {
-        setMessages([...messages, {
-            answer: 'Mensaje de salida'
-        }])
+    const setMessageOneTime = (message) => {
+        setWriting(true)
+        const time = message.length * 100
+        setTimeout(() => {
+            setMessage1(true)
+            setTimeout(() => {
+                setMessage2(true)
+                setTimeout(() => {
+                    setMessage3(true)
+                    setWriting(false)
+                }, time)
+            }, time)
+        }, time)
     }
 
-    const handleClear = () => {
-        setMessages([])
+    const displayMessages = (data) => {
+        return(
+            <>
+            {(message1) ? <RightMessageIn message={data[index].message1}/> : null}
+            {(message2) ? <RightMessageIn message={data[index].message2}/> : null}
+            {(message3) ? <RightMessageIn message={data[index].message3}/> : null}
+            </>
+        )
+    }   
+    
+    const displayAnswers = (data) => {
+        return(
+            <>
+                <RightAnswers answer={data[index].answer1}/>
+                <RightAnswers answer={data[index].answer2}/>
+                <RightAnswers answer={data[index].answer3}/>
+            </>
+        )
     }
 
     return (
@@ -133,9 +145,9 @@ const Ship = () => {
                 <Link to='/config' style={{ textDecoration: 'none'}}>
                     <LeftContact src='https://i.imgur.com/TOznIdC.png' title='Configuración'/>
                 </Link>
-                <button onClick={handleIn}>Receive Message</button>
+                {/* <button onClick={handleIn}>Receive Message</button>
                 <button onClick={handleOut}>Send Message</button>
-                <button onClick={handleClear}>Clear</button>
+                <button onClick={handleClear}>Clear</button> */}
                 <br/>
                 <button onClick={() => dispatch(defaultTheme())}>DEFAULT</button>
                 <button onClick={() => dispatch(goodTheme())}>GOOD</button>
@@ -146,25 +158,15 @@ const Ship = () => {
             <RightSide>
                 <RightHeader writing={writing}/>
                 <RightSideContent>
-                    
-                    {messages.map((m) => (
-                        <>
-                        {(m.message) ? <RightMessageIn message={m.message}/> : null}
-                        {(m.answer) ? <RightMessageOut message={m.answer}/> : null}
-                        </>
-                    ))} 
-                   
 
-                    {(message1) ? <RightMessageIn message={messagesDB[0].message1}/> : null}
-                    {(message2) ? <RightMessageIn message={messagesDB[0].message2}/> : null}
-                    {(message3) ? <RightMessageIn message={messagesDB[0].message3}/> : null}
-
+                    {(messagesDB.length > 0) ? displayMessages(messagesDB) : null}
                     <div ref={messagesEndRef}></div>
+
                 </RightSideContent>
                 <RightSideFooter>
-                        <RightAnswers answer='Respuesta 1'/>
-                        <RightAnswers answer='Respuesta 2'/>
-                        <RightAnswers answer='Respuesta 3'/>
+
+                    {(messagesDB.length > 0) ? displayAnswers(messagesDB) : null}
+
                 </RightSideFooter>
             </RightSide>
         </Container>
