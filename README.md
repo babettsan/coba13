@@ -3,7 +3,7 @@
 -More tools about our proyects
 -Interactive chat, with multiple endings
 -Fake Desk
--Nasa api pofd https://api.nasa.gov/planetary/apod?api_key=Mni37E6Q4hn2aGWh0MORaVbV60MP8eVnN0BN9ct5
+-Nasa api pofd
 
 
 # Getting Started with Create React App
