@@ -1,6 +1,7 @@
 import React from 'react'
 import LandingPage from './Pages/LandingPage.jsx'
 import Ship from './Pages/Ship.jsx'
+import Menu from './Pages/Menu.jsx'
 import Config from './Pages/Config.jsx'
 
 import { useSelector } from 'react-redux'
@@ -35,6 +36,7 @@ const App = () => {
     <ThemeProvider theme={switchTheme(theme)}>
       <Switch>
         <Route exact path='/' component={LandingPage}/>
+        <Route exact path='/menu' component={Menu}/>
         <Route exact path='/ship' component={Ship}/>
         <Route exact path='/config' component={Config}/>
       </Switch>
