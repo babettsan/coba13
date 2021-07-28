@@ -61,7 +61,7 @@ const LandingPage = () => {
         <>
             <Landing>
                 <Title>CoBa 13 Mission</Title>
-                <Link to='/ship' style={{ textDecoration: 'none' }}>
+                <Link to='/menu' style={{ textDecoration: 'none' }}>
                 <Container>
                     <Img/>
                 </Container>

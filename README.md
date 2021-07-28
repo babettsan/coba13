@@ -1,3 +1,11 @@
+# Some initial features planning
+
+-More tools about our proyects
+-Interactive chat, with multiple endings
+-Fake Desk
+-Nasa api pofd https://api.nasa.gov/planetary/apod?api_key=Mni37E6Q4hn2aGWh0MORaVbV60MP8eVnN0BN9ct5
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +76,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Proyect made with love
