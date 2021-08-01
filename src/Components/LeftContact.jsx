@@ -8,7 +8,8 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 10vh;
-    background: var(--main-dark);
+    /* background: var(--main-dark); */
+    background: var(--neu-background-main);
     transition: .25s;
     &:hover {
         cursor: pointer;

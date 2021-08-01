@@ -5,9 +5,9 @@ import RightHeader from '../Components/RightHeader'
 import RightMessageIn from '../Components/RightMessageIn'
 import RightMessageOut from '../Components/RightMessageOut'
 import RightAnswers from '../Components/RightAnswers'
+import LeftMenuBottom from '../Components/LeftMenuBottom'
 
 import { getMessages } from '../Redux/Actions/Messages/MessagesActions'
-import { defaultTheme, goodTheme, openTheme, badTheme, alienTheme } from '../Redux/Actions/GlobalStyles/GlobalStylesActions'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Link } from 'react-router-dom'
@@ -19,23 +19,84 @@ const Container = styled.div`
     flex-direction: row;
     height: 100vh;
     margin: auto auto auto auto;
+    background: var(--neu-background-main);
+    @keyframes fadeInOpacity {
+        0% {
+        opacity: 0;
+        }
+        100% {
+        opacity: 1;
+        }
+    }
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
 `
 const LeftSide = styled.div`
     width: 30vw;
-    background: var(--main-dark-light);
+    background: var(--neu-background-main);
+    position: relative;
 `
+/* Animations */
+const LeftLight = styled.div`
+    width: .5vw;
+    height: 10vh;
+    margin-top: 10vh;
+    background: blue;
+    position: absolute;
+    border-radius: 100px;
+    right: 0;
+    background: var(--neu-background);
+    background: var(--neu-background-gradient);
+    box-shadow: var(--neu-shadow-glow);
+    z-index: 30000;
+    @keyframes move-vertical {
+      0% {
+          transform: translateY();
+      }
+      50% {
+          transform: translateY(80vh);
+      }
+      100% {
+          transform: translateY(0);
+      }
+    }
+    animation: move-vertical 15000ms infinite;
+`
+
 const RightSide = styled.div`
     display: flex;
     flex-direction: column;
     width: 70vw;
     height: 90vh;
-    background: var(--main-color-light);
     overflow-y: scroll;
     background-image: var(--background-image);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     transition: 2s;
+    border-bottom-left-radius: 50px;
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 1vw;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: var(--neu-background-main);
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: var(--neu-background);
+        box-shadow: var(--neu-shadow-glow);
+    }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--neu-background);
+        box-shadow: var(--neu-shadow-glow);
+    }
 `
 const RightSideContent = styled.div`
     width: 100%;
@@ -49,7 +110,7 @@ const RightSideFooter = styled.div`
     align-items: center;
     width: 70vw;
     height: 10vh;
-    background: var(--main-color);
+    background: var(--neu-background-main);
     position: fixed;
     bottom: 0%;
     transition: 2s;
@@ -136,6 +197,7 @@ const Ship = () => {
     return (
         <Container>
             <LeftSide>
+                <LeftLight/>
                 <LeftHeader/>
                 <Link to='/ship' style={{ textDecoration: 'none'}}>
                     <LeftContact src='https://i.imgur.com/NlY3dqi.gif' title='CoBa 13'/>
@@ -148,20 +210,29 @@ const Ship = () => {
                 {/* <button onClick={handleIn}>Receive Message</button>
                 <button onClick={handleOut}>Send Message</button>
                 <button onClick={handleClear}>Clear</button> */}
-                <br/>
-                <button onClick={() => dispatch(defaultTheme())}>DEFAULT</button>
-                <button onClick={() => dispatch(goodTheme())}>GOOD</button>
-                <button onClick={() => dispatch(openTheme())}>OPEN</button>
-                <button onClick={() => dispatch(badTheme())}>BAD</button>
-                <button onClick={() => dispatch(alienTheme())}>ALIEN</button>
+                <LeftMenuBottom/>
             </LeftSide>
             <RightSide>
                 <RightHeader writing={writing}/>
                 <RightSideContent>
-
-                    {(messagesDB.length > 0) ? displayMessages(messagesDB) : null}
-                    <div ref={messagesEndRef}></div>
-
+                    {/* {(messagesDB.length > 0) ? displayMessages(messagesDB) : null}
+                    <div ref={messagesEndRef}></div> */}
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
+                    <RightMessageIn message='Testing'/>
                 </RightSideContent>
                 <RightSideFooter>
 
